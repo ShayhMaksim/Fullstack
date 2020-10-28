@@ -1,10 +1,10 @@
 import './App.css';
-import CalculatorButton from './CalculatorButton';
+import CalculatorPanel from './CalculatorPanel';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CalculatorButton caption = "Hello world!" />
+        <CalculatorPanel/>
       </header>
     </div>
   );
