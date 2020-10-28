@@ -7,14 +7,38 @@ class Calculator extends React.Component {
         super(props)
         this.state={
             result:"",
-            number:["",""],
+            numbers:["",""],
             numberIdx:0,
             operation:"",
         };
     }
 
-    operationHandler(operator) {
+    operationHandler(operation) {
+        if (this.state.numberIdx===1){
+            this.equalHandler();
+            return;
+        }
 
+        if ((operation==="substract"|| operation==="add") && this.state.number[this.state.numberIdx]==="")
+        {
+            this.numberHandler(operation==="substract" ?"-":"+");
+            return;
+        }
+
+    }
+
+    setOperation(operation) {
+        this.setState(
+            {operation:operation}
+        )
+    }
+
+    nextNumber(){
+        const newIdx=this.state.numberIdx===0 ? 1 : 0
+        this.setState({
+            result: this.state.numbers[newIdx],
+            numberIdx:newIdx,
+        });
     }
 
     numberHandler(number) {
