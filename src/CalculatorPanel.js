@@ -2,7 +2,7 @@ import React from 'react'
 import CalculatorButton from './CalculatorButton'
 import CalculatorDisplay from './CalculatorDisplay'
 function CalculatorPanel(props){
-    const captions = [
+    const buttons = [
         {text:"7",handler: ()=>props.numberClicked("7")},
         {text:"8",handler: ()=>props.numberClicked("8")},
         {text:"9",handler: ()=>props.numberClicked("9")},
@@ -22,8 +22,11 @@ function CalculatorPanel(props){
         {text:"=",handler: ()=>props.equalClicked()},
     ];
 
-    const calc_buttons=captions.map((value,index) => {
-        return <CalculatorButton caption={value}/>
+    const calc_buttons=buttons.map((value,index) => {
+        return <CalculatorButton 
+        caption={value.text}
+        onClick={value.handler}
+        />
     });
 
     return (
