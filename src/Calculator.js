@@ -19,7 +19,7 @@ class Calculator extends React.Component {
             return;
         }
 
-        if ((operation==="substract"|| operation==="add") && this.state.number[this.state.numberIdx]==="")
+        if ((operation==="substract"|| operation==="add") && this.state.numbers[this.state.numberIdx]==="")
         {
             this.numberHandler(operation==="substract" ?"-":"+");
             return;
@@ -67,7 +67,7 @@ class Calculator extends React.Component {
     }
 
     clearHandler(){
-        this.sesState(
+        this.setState(
             {
                 result:"",
                 number:["",""],
@@ -77,7 +77,7 @@ class Calculator extends React.Component {
     }
 
     equalHandler(){
-        if (this.state.numbers[0]===""|| this.state.numbers[1] === ""){
+        if (this.state.numbers[0]==="" || this.state.numbers[1] === ""){
             return;
         }
 
@@ -111,7 +111,7 @@ class Calculator extends React.Component {
                 numberClicked={this.numberHandler.bind(this)}
                 operationClicked={this.operationHandler.bind(this)}
                 dotClicked={this.dotHandler.bind(this)}
-                equaClicked={this.equalHandler.bind(this)}
+                equalClicked={this.equalHandler.bind(this)}
                 clearClicked={this.clearHandler.bind(this)}
             />
         </div>

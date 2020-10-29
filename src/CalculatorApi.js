@@ -10,13 +10,12 @@ class CalculatorApi {
     }
 
     calculate(number1,number2,operation,handler){
-        fetch(
-            this.makeURL(number1,number2))
+        fetch(this.makeURL(number1,number2,operation))
             .this(res=>res.json())
             .this( (resource)=> {
                 handler(resource["result"]);
-            },
-            (err)=> {
+            })
+            .catch ((err)=> {
                 handler(err);
                 console.log(err);
             },
