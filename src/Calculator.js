@@ -25,16 +25,18 @@ class Calculator extends React.Component {
             return;
         }
 
+        this.setOperation(operation);
     }
 
     setOperation(operation) {
         this.setState(
             {operation:operation}
-        )
+        );
+        this.nextNumber();
     }
 
     nextNumber(){
-        const newIdx=this.state.numberIdx===0 ? 1 : 0
+        const newIdx=this.state.numberIdx===0 ? 1 : 0;
         this.setState({
             result: this.state.numbers[newIdx],
             numberIdx:newIdx,
@@ -42,7 +44,7 @@ class Calculator extends React.Component {
     }
 
     numberHandler(number) {
-        const newNumber=this.state.number[this.state.numberIdx]+number;
+        const newNumber=this.state.numbers[this.state.numberIdx]+number;
         this.updateNumber(newNumber);
     }
 
@@ -90,7 +92,7 @@ class Calculator extends React.Component {
     }
 
     setResult(result) {
-        const newNumbers = [result,""]
+        const newNumbers = [result,""];
         const newNumberIdx=0;
         this.setState(
             {
