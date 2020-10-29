@@ -43,11 +43,11 @@ class Calculator extends React.Component {
 
     numberHandler(number) {
         const newNumber=this.state.number[this.state.numberIdx]+number;
-        this.updateNumber(newNumber)
+        this.updateNumber(newNumber);
     }
 
     updateNumber(newNumber){
-        var newNumbers=this.state.number;
+        var newNumbers=this.state.numbers;
         newNumbers[this.state.numberIdx]=newNumber;
         this.setState({
             result:newNumbers[this.state.numberIdx],
@@ -65,11 +65,41 @@ class Calculator extends React.Component {
     }
 
     clearHandler(){
-
+        this.sesState(
+            {
+                result:"",
+                number:["",""],
+                numberIdx:0,
+            }
+        )
     }
 
     equalHandler(){
+        if (this.state.numbers[0]===""|| this.state.numbers[1] === ""){
+            return;
+        }
 
+        this.props.calculatorApi.calculate(
+            this.state.numbers[0],
+            this.state.numbers[1],
+            this.state.operation,
+            (result) =>{
+                this.setResult(result);
+            }
+        );
+    }
+
+    setResult(result) {
+        const newNumbers = [result,""]
+        const newNumberIdx=0;
+        this.setState(
+            {
+                result:newNumbers[newNumberIdx],
+                numbers:newNumbers,
+                numberIdx:newNumberIdx,
+                operation:"",
+            }
+        );
     }
 
     render(){
