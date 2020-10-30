@@ -11,16 +11,13 @@ class CalculatorApi {
 
     calculate(number1,number2,operation,handler){
         fetch(this.makeURL(number1,number2,operation))
-            .this(res=>res.json())
-            .this( (resource)=> {
+            .then(res=>res.json())
+            .then( (resource)=> {
                 handler(resource["result"]);
             })
-            .catch ((err)=> {
-                handler(err);
-                console.log(err);
-            },
-            );
+            .catch((error) => console.error(error));
     }
+    
 }
 
 export default CalculatorApi;
