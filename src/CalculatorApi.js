@@ -14,8 +14,12 @@ class CalculatorApi {
             .then(res=>res.json())
             .then( (resource)=> {
                 handler(resource["result"]);
-            })
-            .catch((error) => console.error(error));
+            },
+            (error) => {
+                console.error(error);
+                console.log(error);
+            }
+            );
     }
     
 }
