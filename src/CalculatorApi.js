@@ -15,9 +15,9 @@ class CalculatorApi {
             .then( (resource)=> {
                 handler(resource["result"]);
             },
-            (error) => {
-                console.error(error);
-                console.log(error);
+            (err) => {
+                handler(err);
+                console.log(err);
             }
             );
     }
